@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "prepublish": "cd ../client && yarn run build && cd ../api && yarn install"
+    "prepublish": "cd ../client && yarn install && yarn run build && cd ../api && yarn install"
   },
   "author": "Astha jain",
   "license": "ISC",
