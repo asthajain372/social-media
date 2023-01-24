@@ -51,7 +51,7 @@ export default function Register() {
         password: password.current.value,
       };
       try {
-        await axios.post("/auth/register", user);
+        await axios.post("https://social-media-ugv1.onrender.com/auth/register", user);
         history.push("/login");
       } catch (err) {
         console.log(err);

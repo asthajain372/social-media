@@ -24,11 +24,11 @@ export default function Share() {
       newPost.img = fileName;
       console.log(newPost);
       try {
-        await axios.post("/upload", data);
+        await axios.post("https://social-media-ugv1.onrender.com/upload", data);
       } catch (err) {}
     }
     try {
-      await axios.post("/posts", newPost);
+      await axios.post("https://social-media-ugv1.onrender.com/posts", newPost);
       window.location.reload();
     } catch (err) {}
   };
