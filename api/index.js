@@ -47,9 +47,9 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   }
 });
 
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
-app.use("/api/posts", postRoute);
+app.use("/auth", authRoute);
+app.use("/users", userRoute);
+app.use("/posts", postRoute);
 
 
 //Deployment
