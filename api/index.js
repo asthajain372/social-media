@@ -50,6 +50,22 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+
+
+//Deployment
+const __dirname1 = path.resolve()
+if (process.env.NODE_ENV === 'production') {
+	app.use( express.static( path.join( __dirname1, '../client/build' ) ) )
+
+	app.get( '*', (request, response) => {
+		response.sendFile( path.resolve( __dirname1, "../client", "build", "index.html" ) )
+	} )
+} else {
+	app.get( "/", (request, response) => {
+		response.json( {message: "Server is Up"} );
+	} );
+}
+
 const PORT=process.env.PORT||8800
 app.listen(PORT, () => {
   console.log("Backend server is running!");

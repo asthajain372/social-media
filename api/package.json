@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "prepublish": "cd ../client && yarn run build && cd ../api && yarn install"
   },
   "author": "Astha jain",
   "license": "ISC",
