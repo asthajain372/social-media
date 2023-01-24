@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors=require("cors")
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
@@ -12,7 +13,7 @@ const router = express.Router();
 const path = require("path");
 
 dotenv.config();
-
+app.use(cors())
 mongoose.set('strictQuery', true);
 mongoose.connect(
   process.env.MONGO_URL,
