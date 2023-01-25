@@ -18,7 +18,7 @@ export default function Rightbar({ user }) {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("https://social-media-ugv1.onrender.com/users/friends/" + user._id);
+        const friendList = await axios.get("https://social-media-ugv1.onrender.com/users/friends/" + user?._id);
         setFriends(friendList.data);
       } catch (err) {
         console.log(err);
@@ -31,14 +31,14 @@ export default function Rightbar({ user }) {
     try {
       if (followed) {
         await axios.put(`https://social-media-ugv1.onrender.com/users/${user._id}/follow`, {
-          userId: currentUser._id,
+          userId: currentUser?._id,
         });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        dispatch({ type: "UNFOLLOW", payload: user?._id });
       } else {
         await axios.put(`https://social-media-ugv1.onrender.com/users/${user._id}/unfollow`, {
-          userId: currentUser._id,
+          userId: currentUser?._id,
         });
-        dispatch({ type: "FOLLOW", payload: user._id });
+        dispatch({ type: "FOLLOW", payload: user?._id });
       }
       setFollowed(!followed);
     } catch (err) {
@@ -58,7 +58,7 @@ export default function Rightbar({ user }) {
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => (
-            <Online key={u.id} user={u} />
+            <Online key={u?.id} user={u} />
           ))}
         </ul>
       </>

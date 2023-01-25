@@ -2,12 +2,16 @@ import "./login.css";
 import { useContext, useRef } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 export default function Login() {
   const email = useRef();
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const history=useHistory()
 
+    if(user){
+      history.push('/')
+    }
   const handleClick = (e) => {
     e.preventDefault();
     loginCall(

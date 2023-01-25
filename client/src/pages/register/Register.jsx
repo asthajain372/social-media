@@ -28,10 +28,11 @@
 //   );
 // }
 import axios from "axios";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import "./register.css";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Register() {
   const username = useRef();
@@ -39,7 +40,10 @@ export default function Register() {
   const password = useRef();
   const passwordAgain = useRef();
   const history = useHistory();
-
+  const {user}=useContext(AuthContext)
+  if(user){
+    history.push('/')
+  }
   const handleClick = async (e) => {
     e.preventDefault();
     if (passwordAgain.current.value !== password.current.value) {
